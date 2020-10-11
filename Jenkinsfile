@@ -8,7 +8,7 @@ pipeline {
         //Orchestrator Services
         UIPATH_ORCH_URL = "https://cloud.uipath.com/"
         UIPATH_ORCH_LOGICAL_NAME = "AIFabricDemo"
-        UIPATH_ORCH_TENANT_NAME = "UAT"
+        UIPATH_ORCH_TENANT_NAME = "UATdfds611009"
         UIPATH_ORCH_FOLDER_NAME = "Shared"
     }
 
