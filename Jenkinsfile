@@ -10,7 +10,12 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                UiPathPack outputPath: '${WORKSPACE}\\Output', outputType: '', projectJsonPath: '${WORKSPACE}'
+                UiPathPack (
+                      outputPath: "Output\\${env.BUILD_NUMBER}",
+                      projectJsonPath: "UiPathJenkinsDevOps\\project.json",
+                      version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"]
+                      useOrchestrator: false
+        )
             }
         }
         stage('Test') {
