@@ -14,7 +14,7 @@ pipeline {
                 echo 'Building..'
                 UiPathPack (
                       outputPath: "Output\\${env.BUILD_NUMBER}",
-                      projectJsonPath: "UiPathJenkinsDevOps\\project.json",
+                      projectJsonPath: "project.json",
                       version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"],
                       useOrchestrator: false
         )
