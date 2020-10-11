@@ -7,9 +7,11 @@ pipeline {
         MAJOR = '1'
         MINOR = '0'
         //Orchestrator Services
-        UIPATH_ORCH_URL = "https://cloud.uipath.com/AIFabricDemo/"
+        UIPATH_ORCH_URL = "https://cloud.uipath.com/"
         UIPATH_ORCH_LOGICAL_NAME = "AIFabricDemo"
-        UIPATH_ORCH_TENANT_NAME ="DEV45qc611008"
+        UIPATH_ORCH_TENANT_NAME ="DEV"
+        UIPATH_ORCH_FOLDER_NAME = "Default"
+
 
   }
 
@@ -37,24 +39,25 @@ pipeline {
          // Deploy Stages
         stage('Deploy to UAT') {
             steps {
-                echo "Deploying ${BRANCH_NAME}"
+                echo "Deploying ${BRANCH_NAME} to UAT "
+                UiPathDeploy (
+                packagePath: "Output\\${env.BUILD_NUMBER}",
+                orchestratorAddress: ${UIPATH_ORCH_URL},
+                orchestratorTenant: ${UIPATH_ORCH_TENANT_NAME},
+                folderName: ${UIPATH_ORCH_FOLDER_NAME},
+                environments: "environment",
+                credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: “APIUserKey”]
+        )
             }
         }
 
 
          // Deploy to Production Step
         stage('Deploy to Production') {
-            when {
-                allOf {
-                    branch 'master'
-                    expression { return DPROD ==~ /(?i)(Y|YES|T|TRUE|ON|RUN)/ }
-                }
-            }
             steps {
                 echo 'Deploy to Production'
-                
+                }
             }
-        }
     }
 
     // Options
