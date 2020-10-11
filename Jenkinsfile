@@ -7,7 +7,6 @@ pipeline {
         MAJOR = '1'
         MINOR = '0'
   }
-    }
 
     stages {
         stage('Build') {
