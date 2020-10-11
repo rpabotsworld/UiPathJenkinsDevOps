@@ -57,7 +57,7 @@ pipeline {
                 orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
                 folderName: "${UIPATH_ORCH_FOLDER_NAME}",
                 environments: "${ENV}",
-                credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: “APIUserKey”]
+                credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
         )
             }
         }
