@@ -4,6 +4,9 @@ pipeline {
         environment {
         ENV = "DEV"
         ORCH_URL = "https://deployment.example.com/"
+        MAJOR = '1'
+        MINOR = '0'
+  }
     }
 
     stages {
