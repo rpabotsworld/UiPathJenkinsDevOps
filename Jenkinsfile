@@ -88,7 +88,7 @@ pipeline {
         }
         always {
             /* Clean workspace if success */
-            //cleanWs()
+            cleanWs()
         }
     }
 
